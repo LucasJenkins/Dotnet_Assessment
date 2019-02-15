@@ -17,10 +17,13 @@ namespace DotnetAssessmentSocialMedia.Services
 
         private readonly ILogger _logger;
 
-        public UserService(SocialMediaContext context, ILogger<UserService> logger)
+        public ValidationService _validationService; 
+
+        public UserService(SocialMediaContext context, ILogger<UserService> logger, ValidationService validationService)
         {
             _context = context;
             _logger = logger;
+            _validationService = validationService;
         }
 
         public User GetByUsername(string username)
@@ -94,6 +97,22 @@ namespace DotnetAssessmentSocialMedia.Services
 
             user.Deleted = true;
             _context.SaveChanges();
+            return user;
+        }
+
+        public User UpdateProfile(CredentialsDto credentials, ProfileDto profile)
+        {
+            var user = GetByUsername(credentials.Username);
+            if(profile.LastName != null)
+            {
+                user.Profile.LastName = profile.LastName;
+            }
+            if (profile.FirstName != null)
+            {
+                user.Profile.FirstName = profile.FirstName;
+            }
+            user.Profile.Email = profile.Email;
+            user.Profile.Phone = profile.Phone;
             return user;
         }
     }

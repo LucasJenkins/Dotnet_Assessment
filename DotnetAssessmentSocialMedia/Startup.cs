@@ -26,7 +26,9 @@ namespace DotnetAssessmentSocialMedia
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            
+            services.AddTransient<IValidationService, ValidationService>();
+
+
             // Automapper
             services.AddAutoMapper();
             

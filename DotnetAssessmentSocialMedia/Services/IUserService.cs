@@ -10,5 +10,7 @@ namespace DotnetAssessmentSocialMedia.Services
         IEnumerable<User> GetAll();
         User CreateUser(User user);
         User DeleteUser(string username, CredentialsDto credentials);
+        User UpdateProfile(CredentialsDto credentials, ProfileDto profile);
+        
     }
 }

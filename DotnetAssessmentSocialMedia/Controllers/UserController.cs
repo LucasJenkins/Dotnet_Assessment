@@ -19,7 +19,7 @@ namespace DotnetAssessmentSocialMedia.Controllers
 
         private readonly ILogger _logger;
         
-        public UserController(IUserService userService, IMapper mapper, ILogger<UserController> logger)
+        public UserController(IUserService userService, IMapper mapper, ILogger<ValidateController> logger)
         {
             _userService = userService;
             _mapper = mapper;

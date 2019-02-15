@@ -6,6 +6,7 @@ namespace DotnetAssessmentSocialMedia.Data
     public class SocialMediaContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Hashtag> Hashtags { get; set; }
         
         public SocialMediaContext(DbContextOptions<SocialMediaContext> options)
             : base(options) 
@@ -15,6 +16,8 @@ namespace DotnetAssessmentSocialMedia.Data
         {
             modelBuilder.Entity<Credentials>()
                 .HasAlternateKey(c => c.Username);
+            modelBuilder.Entity<Hashtag>()
+                .HasIndex(e => e.Label).IsUnique();
         }
     }
 }

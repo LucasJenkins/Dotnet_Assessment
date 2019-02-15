@@ -9,5 +9,7 @@ namespace DotnetAssessmentSocialMedia.Dtos
         public ProfileDto Profile { get; set; }
         
         public DateTime Joined { get; set; }
+
+
     }
 }
